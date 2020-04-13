@@ -1,0 +1,33 @@
+version: '1.0.0'
+services: 
+
+  database:
+    image: mysql
+    container_name: mysql.dev
+    command: mysqld --user=root --password=admin --verbose
+    volumes:
+      - /apps/docker/mysql:/var/lib/mysql
+      - ./app/dbsetup/dbsetup.sql:/tmp/dbsetup.sql
+      - ./app/dbsetup/importdb.sh:/tmp/importdb.sh
+    ports:
+      - "3306:3306"
+    environment:
+      DB_NAME: "teacherapp"
+      DB_HOST: "localhost"
+      DB_USER: "root"
+      DB_PWD: "admin"
+    networks: 
+      apinetwork:
+  web:
+    build: .
+    container_name: govtech
+    command: npm start
+    ports:
+      - "8000:8000"
+    networks: 
+      apinetwork:
+
+networks:
+  apinetwork:
+    driver: bridge
+   
