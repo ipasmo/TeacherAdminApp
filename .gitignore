@@ -1,0 +1,3 @@
+# When using GIT this file specifies files/folders to be ignore intentionally
+
+node_modules/
