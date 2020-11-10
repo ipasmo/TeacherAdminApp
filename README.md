@@ -30,3 +30,5 @@ mysql -u root -padmin < D:\Mone\Projects\sourcecode\govtech-assessment\app\dbset
 npm install
 npm start
 ```
+
+## END of Documentation
